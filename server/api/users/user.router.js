@@ -27,8 +27,13 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   User.create(req.body)
-  .then(function (user) {
-    res.status(201).json(user);
+  .then(user => {
+    if (user) {
+      req.session.userId = user.id
+      res.status(200).json(user)
+    } else {
+      res.sendStatus(401)
+    }
   })
   .catch(next);
 });
