@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { loginUser } from '../redux/login'
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -57,15 +58,21 @@ class Login extends React.Component {
   }
 
   onLoginSubmit(event) {
-    const { message } = this.props;
+    // const { message } = this.props;
     event.preventDefault();
-    console.log(`${message} isn't implemented yet`);
+    this.props.loginUser(event.target.email.value, event.target.password.value)
+    
   }
 }
 
 /* -----------------    CONTAINER     ------------------ */
 
+// in redux/users, create an thunk creator to login a user
+// in mapDispatch give props that thunk 
+// in the submit function dispatch the thunk 
+
+
 const mapState = () => ({ message: 'Log in' });
-const mapDispatch = null;
+const mapDispatch = { loginUser };
 
 export default connect(mapState, mapDispatch)(Login);

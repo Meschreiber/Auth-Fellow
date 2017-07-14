@@ -15,7 +15,6 @@ const create = user  => ({ type: CREATE, user });
 const remove = id    => ({ type: REMOVE, id });
 const update = user  => ({ type: UPDATE, user });
 
-
 /* ------------       REDUCER     ------------------ */
 
 export default function reducer (users = [], action) {
